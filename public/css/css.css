@@ -1,0 +1,10 @@
+footer {
+    padding-bottom: 20px;
+}
+
+.fork-me-ribbon {
+    width: 130px;
+    right: 0;
+    top: 0;
+    position: absolute;
+}
