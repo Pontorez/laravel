@@ -393,13 +393,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table('news')->insert([
             'id' => 17,
-            'title' => 'Labdien!',
-            'body' => 'Sveiki! Kā jums labi iet?',
+            'title' => 'Вор Клишас внёс в госдуру законопроект о блокировке электронной почты русских рабов',
+            'body' => file_get_contents(dirname(__FILE__) . '/data/klishas.txt'),
             'category_id' => CAT_NEWS,
-            'created_at' => '2019-02-02',
+            'created_at' => '2019-07-23',
         ]);
         DB::table('news_tags')->insert([
             'news_id' => 17,
+            'tag_id' => TAG_MISC,
+        ]);
+
+        ################################################################################################################
+
+        DB::table('news')->insert([
+            'id' => 18,
+            'title' => 'Русские рабы в основном поддержали разгон акции протеста в Москве',
+            'body' => file_get_contents(dirname(__FILE__) . '/data/raby.txt'),
+            'category_id' => CAT_NEWS,
+            'created_at' => '2019-08-04',
+        ]);
+        DB::table('news_tags')->insert([
+            'news_id' => 18,
             'tag_id' => TAG_MISC,
         ]);
 
