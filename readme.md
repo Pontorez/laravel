@@ -6,7 +6,7 @@ Functional requirements:
 - The ability to add / edit / delete news (headline, text, date, category)
 - Page with news list and pagination
 - A page with one news, a list of comments and a form for adding a comment
-- CRUD categories
+- CRUD for categories
 - Tags and filtering by tags
 
 # Requirements
