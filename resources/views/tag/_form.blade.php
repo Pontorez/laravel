@@ -1,10 +1,11 @@
 @include('errors.list')
+@csrf
 
 <div class="form-group">
-    {!! Form::label('name', 'Tag name:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    <label for="name">Tag name:</label>
+    <input class="form-control" name="name" type="text" id="name" value="{{$tag->name}}">
 </div>
 
 <div class="form-group">
-    {!! Form::submit($submitButtonText, ['class'=>'btn btn-success']) !!}
+    <input class="btn btn-success" type="submit" value="{{$submitButtonText}}">
 </div>

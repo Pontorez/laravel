@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-
-    /**
-     * Fillable fields for a tag
-     * @var array
-     */
     protected $fillable = ['name'];
 
     public static function getAllTags() {
@@ -23,10 +18,6 @@ class Tag extends Model
         return $result;
     }
 
-    /**
-     * Get the news items associated with the tag
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function newsItems() {
         return $this->belongsToMany('App\News', 'news_tags', 'tag_id', 'news_id');
     }

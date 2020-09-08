@@ -1,52 +1,101 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Category;
-use App\Http\Requests\NewsRequest;
 use App\News;
 use App\Tag;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index() {
-        $news = News::orderBy('created_at', 'desc')->paginate(5);
-        return view('news.index', compact('news'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $news = News::latest()->paginate(5);
+        return view('news.index',compact('news'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    public function edit(News $news) {
-        $tags = $news->tags->pluck('id')->toArray();
-        $allTags = Tag::getAllTags();
-        $categories = Category::getAllCategories();
-        return view('news.edit', compact('news', 'categories', 'tags', 'allTags'));
-    }
-
-    public function show(News $news) {
-        return view('news.show', compact('news'));
-    }
-
-    public function destroy(News $news) {
-        $news->delete();
-        return redirect('/');
-    }
-
-    public function create() {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         $tags = Tag::getAllTags();
         $allTags = Tag::getAllTags();
         $categories = Category::getAllCategories();
         return view('news.create', compact(['tags', 'categories', 'news', 'allTags']));
     }
 
-    public function store(NewsRequest $request) {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $newsItem = News::create($request->all());
         $newsItem->tags()->attach($request->input('tags'));
         return redirect('/');
     }
 
-    public function update(NewsRequest $request, News $news) {
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\News  $news
+     * @return \Illuminate\Http\Response
+     */
+    public function show(News $news)
+    {
+        return view('news.show', compact('news'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\News  $news
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(News $news)
+    {
+        $tags = $news->tags->pluck('id')->toArray();
+        $allTags = Tag::getAllTags();
+        $categories = Category::getAllCategories();
+        return view('news.edit', compact('news', 'categories', 'tags', 'allTags'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\News  $news
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, News $news)
+    {
         $news->update($request->all());
         $news->tags()->detach();
         $news->tags()->attach($request->input('tags'));
         return redirect('/');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\News  $news
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(News $news)
+    {
+        $news->delete();
+        return redirect('/');
+    }
 }

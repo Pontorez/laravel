@@ -6,10 +6,8 @@
 
     <hr/>
 
-    {!! Form::open(['url' => '/category']) !!}
-
-    @include('category._form', ['submitButtonText' => 'Create category'])
-
-    {!! Form::close() !!}
+    <form method="POST" action="/category">
+        @include('category._form', ['submitButtonText' => 'Create category'])
+    </form>
 
 @stop

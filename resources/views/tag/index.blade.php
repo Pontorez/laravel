@@ -7,7 +7,7 @@
     <hr/>
 
     <div class="form-group">
-        {!! Form::button('Add new tag', ['onclick' => 'location="/tag/create"', 'class' => 'btn btn-success']) !!}
+        <button onclick="location'/tag/create'" class="btn btn-success" type="button">Add new tag</button>
     </div>
 
     <ul class="list-group">

@@ -6,10 +6,9 @@
 
     <hr/>
 
-    {!! Form::model($category, ['method' => 'patch', 'url' => "/category/$category->id"]) !!}
-
-    @include('category._form', ['submitButtonText' => 'Update category'])
-
-    {!! Form::close() !!}
+    <form method="POST" action="/category/{{$category->id}}">
+        @method('PATCH')
+        @include('category._form', ['submitButtonText' => 'Update category'])
+    </form>
 
 @stop

@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Http\Requests\CommentRequest;
 use App\News;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, News $newsItem) {
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'body' => 'required|min:2',
             'author' => 'required',
@@ -24,18 +29,17 @@ class CommentController extends Controller
         ]);
 
         return redirect('/news/' . $newsItem->id . '#comments');
-
     }
 
-    public function destroy(Comment $comment) {
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Comment $comment)
+    {
         $comment->delete();
         return back();
     }
-
-    public function update(CommentRequest $request, Comment $comment) {
-
-        $comment->update($request->all());
-        return redirect('/news/' . $comment->news_id . '#comments');
-    }
-
 }

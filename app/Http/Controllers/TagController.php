@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TagRequest;
+use Illuminate\Http\Request;
 
 use App\Tag;
 
@@ -22,12 +22,12 @@ class TagController extends Controller
         return back();
     }
 
-    public function store(TagRequest $request) {
+    public function store(Request $request) {
         Tag::create($request->all());
         return redirect('/tag');
     }
 
-    public function update(TagRequest $request, Tag $tag) {
+    public function update(Request $request, Tag $tag) {
         $tag->update($request->all());
         return redirect('/tag');
     }

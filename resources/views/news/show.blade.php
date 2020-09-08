@@ -29,24 +29,23 @@
             <hr/>
             <h3>Add new comment</h3>
 
-            {!! Form::open(['url' => "/comment"]) !!}
+            <form method="POST" action="/comment">
+                @csrf
 
                 <input type="hidden" name="news_id" value="{{$news->id}}">
                 <div class="form-group">
-                    {!! Form::label('author', 'Your name:') !!}
+                    <label for="author">Your name:</label>
                     <input type="text" name="author" id="author" class="form-control" value="{{old('author')}}">
                 </div>
                 <div class="form-group">
-                    {!! Form::label('body', 'Comment:') !!}
-                    {!! Form::textarea('body', old('body'), ['class' => 'form-control']) !!}
+                    <label for="body">Comment:</label>
+                    <textarea class="form-control" name="body" cols="50" rows="10" id="body"></textarea>
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Add comment', ['class'=>'btn btn-success']) !!}
+                    <input class="btn btn-success" type="submit" value="Add comment">
                 </div>
 
-            {!! Form::close() !!}
-
-            @include('errors.list')
+            </form>
 
         </div>
     </div>

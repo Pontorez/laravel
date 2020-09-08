@@ -7,9 +7,9 @@
     <hr/>
 
     <div class="form-group">
-        {!! Form::button('Manage categories', ['onclick' => 'location="/category"', 'type' => 'submit', 'class' => 'btn btn-primary']) !!}
-        {!! Form::button('Manage tags', ['onclick' => 'location="/tag"', 'class' => 'btn btn-primary']) !!}
-        {!! Form::button('Create news item', ['onclick' => 'location="/news/create"', 'class' => 'btn btn-success']) !!}
+        <button onclick="location='/category'" type="submit" class="btn btn-primary">Manage categories</button>
+        <button onclick="location='/tag'" class="btn btn-primary" type="button">Manage tags</button>
+        <button onclick="location='/news/create'" class="btn btn-success" type="button">Create news item</button>
     </div>
 
     @unless (Route::currentRouteName())

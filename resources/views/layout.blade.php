@@ -18,7 +18,7 @@
 
     @unless(Request::path() == '/')
         <hr/>
-        <footer class="text-center">{!! Form::button('Go to main page', ['onclick' => 'location="/"', 'class' => 'btn btn-primary']) !!}</footer>
+        <footer class="text-center"><button onclick="location=&quot;/&quot;" class="btn btn-primary" type="button">Go to main page</button></footer>
     @endunless
 
 </div>

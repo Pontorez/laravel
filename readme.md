@@ -1,4 +1,4 @@
-# Install
+# Installation
 
 1. ```git clone https://github.com/Pontorez/laravel.git```
 2. ```cd laravel```

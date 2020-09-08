@@ -6,10 +6,9 @@
 
     <hr/>
 
-    {!! Form::model($tag, ['method' => 'patch', 'url' => "/tag/$tag->id"]) !!}
-
-    @include('tag._form', ['submitButtonText' => 'Update tag'])
-
-    {!! Form::close() !!}
+    <form method="POST" action="/tag/{{$tag->id}}">
+        @method('PATCH')
+        @include('tag._form', ['submitButtonText' => 'Update tag'])
+    </form>
 
 @stop

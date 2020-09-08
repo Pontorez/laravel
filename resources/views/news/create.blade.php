@@ -12,9 +12,9 @@
         </div>
     @endunless
 
-    {!! Form::open(['url' => '/news']) !!}
+    <form method="POST" action="/news">
 
     @include('news._form', ['submitButtonText' => 'Create'])
 
-    {!! Form::close() !!}
+    </form>
 @stop

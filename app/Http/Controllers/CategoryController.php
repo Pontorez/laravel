@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Category;
-use App\Http\Requests\CategoryRequest;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -20,12 +20,12 @@ class CategoryController extends Controller
         return back();
     }
 
-    public function store(CategoryRequest $request) {
+    public function store(Request $request) {
         Category::create($request->all());
         return redirect('/category');
     }
 
-    public function update(CategoryRequest $request, Category $category) {
+    public function update(Request $request, Category $category) {
         $category->update($request->all());
         return redirect('/category');
     }

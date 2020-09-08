@@ -21,13 +21,12 @@ define('TAG_MISC', 9);
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
     public function run()
     {
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('categories')->truncate();
         DB::table('tags')->truncate();
