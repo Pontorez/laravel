@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,16 +13,18 @@ class News extends Model
         'created_at',
     ];
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function category() {
+    public function category()
+    {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
-    public function tags() {
-        return $this->belongsToMany('App\Tag', 'news_tags', 'news_id', 'tag_id');
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'news_tags', 'news_id', 'tag_id');
     }
-
 }

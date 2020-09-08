@@ -14,7 +14,7 @@
 
     @unless (Route::currentRouteName())
         <div class="text-center">
-        {{@$news->links()}}
+            <p>{{$news->links()}}</p>
         </div>
     @endunless
 
@@ -33,7 +33,7 @@
                 @unless($newsItem->tags->isEmpty())
                     <h5>Tags:
                         @foreach($newsItem->tags as $tag)
-                            <a href="/tag/{{ $tag->name }}">{{ $tag->name }}</a>
+                            <a href="/tag/{{ $tag->id }}">{{ $tag->name }}</a>
                         @endforeach
                     </h5>
                 @endunless
@@ -49,7 +49,7 @@
 
     @unless (Route::currentRouteName())
         <div class="text-center">
-            {{@$news->links()}}
+            <p>{{$news->links()}}</p>
         </div>
     @endunless
 @stop

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\News;
+use App\Models\Comment;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+
     /**
      * Store a newly created resource in storage.
      *
@@ -28,13 +29,13 @@ class CommentController extends Controller
             'news_id' => $request->news_id,
         ]);
 
-        return redirect('/news/' . $newsItem->id . '#comments');
+        return redirect("/news/{$newsItem->id}#comments");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
     public function destroy(Comment $comment)

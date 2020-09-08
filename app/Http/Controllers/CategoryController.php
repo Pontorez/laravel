@@ -1,37 +1,78 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index() {
-        $categories = Category::all();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $categories = \App\Models\Category::all();
         return view('category.index', compact('categories'));
     }
 
-    public function create() {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         return view('category.create');
     }
 
-    public function destroy(Category $category) {
-        $category->delete();
-        return back();
-    }
-
-    public function store(Request $request) {
-        Category::create($request->all());
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        \App\Models\Category::create($request->all());
         return redirect('/category');
     }
 
-    public function update(Request $request, Category $category) {
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Category $category)
+    {
+        return view('category.edit', compact('category'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Category $category)
+    {
         $category->update($request->all());
         return redirect('/category');
     }
 
-    public function edit(Category $category) {
-        return view('category.edit', compact('category'));
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return back();
     }
-
 }

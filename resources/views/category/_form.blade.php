@@ -2,7 +2,6 @@
 @csrf
 
 <div class="form-group">
-
     <label for="title">Category name:</label>
     <input class="form-control" name="title" type="text" value="{{isset($category) ? $category->title : ''}}" id="title">
 </div>

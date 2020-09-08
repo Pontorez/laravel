@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\TagController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,16 +17,16 @@
 |
 */
 
-Route::get('/', 'NewsController@index');
+Route::get('/', [NewsController::class, 'index']);
 
-Route::resource('news', 'NewsController');
-Route::get('news/{news}/delete', 'NewsController@destroy');
+Route::resource('news', NewsController::class);
+Route::get('news/{news}/delete', [NewsController::class, 'destroy']);
 
-Route::resource('category', 'CategoryController');
-Route::get('category/{category}/delete', 'CategoryController@destroy');
+Route::resource('category', CategoryController::class);
+Route::get('category/{category}/delete', [CategoryController::class, 'destroy']);
 
-Route::resource('tag', 'TagController');
-Route::get('tag/{tag}/delete', 'TagController@destroy');
+Route::resource('tag', TagController::class);
+Route::get('tag/{tag}/delete', [TagController::class, 'destroy']);
 
-Route::resource('comment', 'CommentController');
-Route::get('comment/{comment}/delete', 'CommentController@destroy');
+Route::resource('comment', CommentController::class);
+Route::get('comment/{comment}/delete', [CommentController::class, 'destroy']);

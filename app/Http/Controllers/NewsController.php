@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\News;
-use App\Tag;
+use App\Models\Category;
+use App\Models\News;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -17,7 +17,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::latest()->paginate(5);
-        return view('news.index',compact('news'))
+        return view('news.index', compact('news'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -28,10 +28,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $tags = Tag::getAllTags();
+        $tags = [];
         $allTags = Tag::getAllTags();
         $categories = Category::getAllCategories();
-        return view('news.create', compact(['tags', 'categories', 'news', 'allTags']));
+        return view('news.create', compact(['tags', 'categories', 'allTags']));
     }
 
     /**
@@ -50,7 +50,7 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\News  $news
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function show(News $news)
@@ -61,7 +61,7 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\News  $news
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function edit(News $news)
@@ -76,7 +76,7 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\News  $news
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, News $news)
@@ -90,7 +90,7 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\News  $news
+     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function destroy(News $news)

@@ -7,7 +7,7 @@
     <hr/>
 
     <div class="form-group">
-        <button onclick="location'/tag/create'" class="btn btn-success" type="button">Add new tag</button>
+        <button onclick="location='/tag/create'" class="btn btn-success" type="button">Add new tag</button>
     </div>
 
     <ul class="list-group">

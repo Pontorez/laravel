@@ -3,7 +3,7 @@
 
 <div class="form-group">
     <label for="name">Tag name:</label>
-    <input class="form-control" name="name" type="text" id="name" value="{{$tag->name}}">
+    <input class="form-control" name="name" type="text" id="name" value="{{isset($tag) ? $tag->name : ''}}">
 </div>
 
 <div class="form-group">

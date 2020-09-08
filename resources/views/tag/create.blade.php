@@ -6,10 +6,8 @@
 
     <hr/>
 
-    {!! Form::open(['url' => '/tag']) !!}
-
-    @include('tag._form', ['submitButtonText' => 'Create tag'])
-
-    {!! Form::close() !!}
+    <form method="POST" action="/tag">
+        @include('tag._form', ['submitButtonText' => 'Create tag'])
+    </form>
 
 @stop

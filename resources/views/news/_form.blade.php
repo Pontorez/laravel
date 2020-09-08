@@ -41,6 +41,6 @@
 @endunless
 
 <div class="form-group">
-    <button type="submit" class="btn btn-success">Update news item</button>
+    <button type="submit" class="btn btn-success">Save news item</button>
     <button onclick="location='/'" class="btn btn-danger" type="button">Cancel</button>
 </div>
