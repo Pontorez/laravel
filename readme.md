@@ -1,3 +1,7 @@
+# Requirements
+
+- PHP 7.3+
+
 # Installation
 
 1. ```git clone https://github.com/Pontorez/laravel.git```
@@ -8,3 +12,7 @@
 6. ```php artisan key:generate```
 7. ```php artisan migrate```
 8. ```php artisan db:seed```
+
+# Demo
+
+https://laravel.pontorez.com/
