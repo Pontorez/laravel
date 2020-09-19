@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/css/css.css" rel="stylesheet"/>
+    <script>
+        "use strict";
+        function deleteRequest(url) {
+            var deleteForm = document.getElementById('deleteForm');
+            deleteForm.action = url;
+            deleteForm.submit();
+        }
+    </script>
 </head>
 <body>
 
@@ -22,6 +30,11 @@
     @endunless
 
 </div>
+
+<form id="deleteForm" method="POST">
+    @csrf
+    @method('DELETE')
+</form>
 
 </body>
 </html>

@@ -23,7 +23,7 @@
             <li class="list-group-item">
                 <div class="pull-right text-center">
                     <b>{{ $newsItem->created_at->format('Y-m-d') }}</b><br/>
-                    [ <a href="/news/{{ $newsItem->id }}/edit">edit</a> | <a href="/news/{{ $newsItem->id }}/delete" onclick="return confirm('Are you sure you want to delete it?')">delete</a> ]
+                    [ <a href="/news/{{ $newsItem->id }}/edit">edit</a> | <a href="javascript:deleteRequest('/news/{{ $newsItem->id }}/delete')" onclick="return confirm('Are you sure you want to delete it?')">delete</a> ]
                 </div>
 
                 <h3><a href="/news/{{ $newsItem->id }}">{{ $newsItem->title }}</a></h3>

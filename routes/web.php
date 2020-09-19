@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [NewsController::class, 'index']);
 
 Route::resource('news', NewsController::class);
-Route::get('news/{news}/delete', [NewsController::class, 'destroy']);
+Route::delete('news/{news}/delete', [NewsController::class, 'destroy']);
 
 Route::resource('category', CategoryController::class);
 Route::get('category/{category}/delete', [CategoryController::class, 'destroy']);
